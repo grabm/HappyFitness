@@ -1,0 +1,30 @@
+﻿Domain
+zależności: brak
+-zawiera: 
+	-logikę biznesową 
+	-modele
+-brak zależności do innych warstw
+
+Application
+zależności: HappyFitness.Domain
+-zawiera
+	-logikę aplikacji
+	-use cases
+-Implementuje się CQRS (Comandy, Queries, Handlery)
+
+Infrastructure
+zależności: HappyFitness.Application
+-implementuje się interfejsy z warstwy application
+-zawiera obsługę bazy danych
+-komunikuje się z zew API
+
+HappyFitness.MAUI
+zależności: HappyFitness.Application
+-dla apek moblinych
+-zawiera
+	-widoki XAML
+	-style
+	-logikę UI
+
+MVVM
+-INotifyPropertyChanged  pozwala view modelovi informować widok że jakieś dane się zmieniły i należy odświeżyć widok
