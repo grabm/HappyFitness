@@ -1,4 +1,4 @@
-namespace HappyFitness.MAUI.Pages.Profile;
+namespace HappyFitness.Mobile.Pages.Profile;
 
 public partial class ProfilePage : ContentPage
 {
