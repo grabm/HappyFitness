@@ -23,11 +23,13 @@ namespace HappyFitness.Mobile
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+            builder.Services.AddTransient<HomeViewModel>();
             builder.Services.AddTransient<GymViewModel>();
             builder.Services.AddTransient<DiaryViewModel>();
             builder.Services.AddTransient<RecordsViewModel>();
             builder.Services.AddTransient<ProfileViewModel>();
 
+            builder.Services.AddTransient<HomePage>();
             builder.Services.AddTransient<GymPage>();
             builder.Services.AddTransient<DiaryPage>();
             builder.Services.AddTransient<RecordsPage>();

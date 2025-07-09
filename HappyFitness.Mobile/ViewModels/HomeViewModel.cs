@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HappyFitness.MAUI.ViewModels
+namespace HappyFitness.Mobile.ViewModels
 {
-    internal class ProfileViewModel
+    public class HomeViewModel
     {
     }
 }

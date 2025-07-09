@@ -12,6 +12,11 @@
     Title="HappyFitness.Mobile">
 
     <TabBar>
+        <Tab Title="Home" Icon="icon_home.svg">
+            <ShellContent
+                ContentTemplate="{DataTemplate local:HomePage}"
+                Route="HomePage" />
+        </Tab>
 
         <Tab Title="Dziennik" Icon="icon_diary.svg">
             <ShellContent

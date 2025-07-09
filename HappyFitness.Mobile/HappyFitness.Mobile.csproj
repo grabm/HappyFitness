@@ -65,8 +65,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="DashboardPage.xaml.cs">
-	    <DependentUpon>DashboardPage.xaml</DependentUpon>
+	  <Compile Update="HomePage.xaml.cs">
+	    <DependentUpon>HomePage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
