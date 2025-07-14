@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HappyFitness.Mobile.ViewModels
+﻿namespace HappyFitness.Mobile.ViewModels
 {
-    internal class GymViewModel
+    public class GymViewModel : ContentPage
     {
+        public GymViewModel(GymViewModel viewModel)
+        {
+            BindingContext = viewModel;
+        }
     }
 }
