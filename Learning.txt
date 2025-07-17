@@ -28,3 +28,13 @@ zależności: HappyFitness.Application
 
 MVVM
 -INotifyPropertyChanged  pozwala view modelovi informować widok że jakieś dane się zmieniły i należy odświeżyć widok
+
+Encje
+-Używamy ICollection<T> zamiast List<T>, ponieważ jest to bardziej elastyczne i zgodne z dobrymi praktykami programowania.
+
+Abstrakcja: ICollection<T> to interfejs, a nie konkretna implementacja. Mówi on tylko "to jest jakaś kolekcja", nie precyzując, czy pod spodem jest to List<T>, HashSet<T> czy inny typ. Dzięki temu nasz model domeny jest bardziej ogólny.
+
+Elastyczność dla EF Core: Entity Framework może "podmienić" implementację tej kolekcji na taką, która jest dla niego najwygodniejsza. 
+Na przykład, przy włączonym mechanizmie "lazy loading" (leniwe ładowanie), EF Core tworzy specjalną, dynamiczną kolekcję, która pobiera dane z bazy dopiero wtedy, gdy po raz pierwszy się do niej odwołasz. Użycie ICollection<T> to umożliwia.
+
+Reprezentacja relacji: Relacja "jeden-do-wielu" w bazie danych bardziej przypomina zbiór (Set) niż listę (List), ponieważ kolejność zazwyczaj nie ma znaczenia, a duplikaty nie powinny występować. ICollection<T> lepiej oddaje tę naturę.
