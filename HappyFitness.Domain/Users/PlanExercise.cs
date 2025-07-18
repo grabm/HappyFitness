@@ -5,9 +5,24 @@ namespace HappyFitness.Domain.Users
     public class PlanExercise : BaseEntity
     {
         /// <summary>
+        /// Foreign key to the parent WorkoutPlan.
+        /// </summary>
+        public Guid WorkoutPlanId { get; set; }
+
+        /// <summary>
+        /// Navigation property to the parent WorkoutPlan.
+        /// </summary>
+        public WorkoutPlan WorkoutPlan { get; set; }
+
+        /// <summary>
         /// Foreign key to the ExerciseDefinition entity.
         /// </summary>
-        public Guid ExcerciseDefinitionId { get; set; }
+        public Guid ExerciseDefinitionId { get; set; }
+
+        /// <summary>
+        /// Navigation property to the related ExerciseDefinition.
+        /// </summary>
+        public ExerciseDefinition ExerciseDefinition { get; set; }
 
         /// <summary>
         /// The target number of sets to perform.

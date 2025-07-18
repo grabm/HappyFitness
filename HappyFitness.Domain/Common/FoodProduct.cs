@@ -5,7 +5,12 @@
         /// <summary>
         /// Foreign key to the FoodSource entity.
         /// </summary>
-        public Guid FoodSource { get; set; }
+        public Guid FoodSourceId { get; set; }
+
+        /// <summary>
+        /// Navigation property to the related FoodSource.
+        /// </summary>
+        public FoodSource FoodSource { get; set; }
 
         /// <summary>
         /// The name of the food product, e.g., "Chicken Egg".

@@ -10,6 +10,11 @@ namespace HappyFitness.Domain.Users
         public Guid UserId { get; set; }
 
         /// <summary>
+        /// Navigation property to the parent User.
+        /// </summary>
+        public User User { get; set; }
+
+        /// <summary>
         /// The daily calorie goal in kcal.
         /// </summary>
         public float DailyCalorieGoal { get; set; }

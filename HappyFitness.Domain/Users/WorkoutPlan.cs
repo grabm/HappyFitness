@@ -10,6 +10,11 @@ namespace HappyFitness.Domain.Users
         public Guid UserId { get; set; }
 
         /// <summary>
+        /// Navigation property to the parent User.
+        /// </summary>
+        public User User { get; set; }
+
+        /// <summary>
         /// The name of the workout plan, e.g., "Workout A: Push".
         /// </summary>
         public string Name { get; set; }
