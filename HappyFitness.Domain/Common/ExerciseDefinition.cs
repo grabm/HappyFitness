@@ -21,5 +21,10 @@
         /// Optional description of the exercise
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// A short name or abbreviation for the exercise, e.g., "BP" for Bench Press.
+        /// </summary>
+        public string ShortName { get; set; }
     }
 }

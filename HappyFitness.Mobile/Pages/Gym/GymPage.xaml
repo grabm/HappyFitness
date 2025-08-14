@@ -1,15 +1,71 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!-- Main content page declaration using .NET MAUI -->
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewModels="clr-namespace:HappyFitness.Mobile.ViewModels"
+             xmlns:dtos="clr-namespace:HappyFitness.Application.Dtos;assembly=HappyFitness.Application"
              x:Class="HappyFitness.Mobile.Pages.Gym.GymPage"
-             Title="Siłownia"
-             >
+             x:DataType="viewModels:GymViewModel"
+             Title="Siłownia">
 
+    <!-- Behavior to execute a command when the page appears -->
+    <!--<ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior
+            EventName="Appearing"
+            Command="{Binding LoadHistoryCommand}" />
+    </ContentPage.Behaviors>-->
+
+    <!-- Layout grid with two rows: one for the button, one for workout history -->
     <Grid RowDefinitions="Auto, *" Padding="20" RowSpacing="20">
-        <Button Grid.Row="0" Text="Rozpocznij nowy trening" />
+
+        <!-- Button to start a new workout -->
+        <Button Grid.Row="0" Text="Rozpocznij nowy trening" FontSize="Large"/>
+
+        <!-- Section for displaying workout history -->
         <VerticalStackLayout Grid.Row="1" Spacing="10">
-            <Label Text="Historia treningów" />
+            <!-- Title for the workout history section -->
+            <Label Text="Historia treningów" FontSize="22" FontAttributes="Bold"/>
+
+            <!-- List of past workouts -->
             <CollectionView ItemsSource="{Binding PastWorkouts}">
+
+                <!-- Template for each workout item -->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="dtos:WorkoutHistoryDto">
+
+                        <!-- Card-style container with border and shadow -->
+                        <Border Padding="15" Margin="0,5" Stroke="LightGray" StrokeThickness="1">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10"/>
+                            </Border.StrokeShape>
+                            <Border.Shadow>
+                                <Shadow Brush="Black" Offset="5,5" Radius="10" Opacity="0.1" />
+                            </Border.Shadow>
+
+                            <!-- Workout details layout -->
+                            <VerticalStackLayout Spacing="8">
+                                <!-- Workout name -->
+                                <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold"/>
+
+                                <!-- Horizontal list of performed exercise names -->
+                                <HorizontalStackLayout Spacing="5" BindableLayout.ItemsSource="{Binding PerformedExerciseShortNames}">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <!-- Tag-like border around each exercise name -->
+                                            <Border Stroke="LightGray" StrokeThickness="1" Padding="8,4" StrokeShape="RoundRectangle 5">
+                                                <Label Text="{Binding .}" FontSize="12" />
+                                            </Border>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+
+                        </Border>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
             </CollectionView>
         </VerticalStackLayout>
     </Grid>
