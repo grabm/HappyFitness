@@ -23,7 +23,7 @@ namespace HappyFitness.Application.Workouts.Queries
                     Id = ws.Id,
                     Name = ws.Name,
                     Date = ws.CreatedDateUtc,
-                    PerformedExcerciseShortNames = ws.PerformedExercises
+                    PerformedExerciseShortNames = ws.PerformedExercises
                     .OrderBy(pe => pe.CreatedDateUtc)
                     .Select(pe => pe.ExerciseDefinition.ShortName)
                     //.Take(4)

@@ -48,17 +48,17 @@
                                 <!-- Workout name -->
                                 <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold"/>
 
-                                <!-- Horizontal list of performed exercise names -->
-                                <HorizontalStackLayout Spacing="5" BindableLayout.ItemsSource="{Binding PerformedExerciseShortNames}">
+                                <!-- vertical list of performed exercise names -->
+                                <VerticalStackLayout Spacing="5" BindableLayout.ItemsSource="{Binding PerformedExerciseShortNames}">
                                     <BindableLayout.ItemTemplate>
-                                        <DataTemplate>
+                                        <DataTemplate x:DataType="x:String">
                                             <!-- Tag-like border around each exercise name -->
                                             <Border Stroke="LightGray" StrokeThickness="1" Padding="8,4" StrokeShape="RoundRectangle 5">
                                                 <Label Text="{Binding .}" FontSize="12" />
                                             </Border>
                                         </DataTemplate>
                                     </BindableLayout.ItemTemplate>
-                                </HorizontalStackLayout>
+                                </VerticalStackLayout>
                             </VerticalStackLayout>
 
                         </Border>

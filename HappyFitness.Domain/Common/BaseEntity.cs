@@ -5,7 +5,7 @@
         /// <summary>
         /// The unique identifier for the entity
         /// </summary>
-        public Guid Id { get; protected set; } = new Guid();
+        public Guid Id { get; protected set; } = Guid.NewGuid();
 
         /// <summary>
         /// The date of row created
