@@ -8,20 +8,14 @@ namespace HappyFitness.Api
     {
         public static void Main(string[] args)
         {
-            //TODO poprawić tą metodę
-
             var builder = WebApplication.CreateBuilder(args);
-
-            var connectionString = builder.Configuration.GetConnectionString("Default");
-
-            builder.Services.AddDbContext<HappyFitnessDbContext>(opt =>
-            opt.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
             builder.Services.AddScoped<IApplicationDbContext>(sp => sp.GetRequiredService<HappyFitnessDbContext>());
 
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(IApplicationMarker).Assembly));
 
-            builder.Services.AddInfrastructureServices(connectionString);
+            builder.Services.AddInfrastructureServices(builder.Configuration);
+
 
 
             var app = builder.Build();

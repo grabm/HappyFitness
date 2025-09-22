@@ -19,8 +19,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{65E9A9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyFitness.Mobile", "HappyFitness.Mobile\HappyFitness.Mobile.csproj", "{8D341946-68FF-45CD-AD42-05FC26F84B6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyFitness.MigrationsHost", "HappyFitness.MigrationsHost\HappyFitness.MigrationsHost.csproj", "{B80E7A37-FD46-4CC8-B2D4-9B30B9CC3DF6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyFitness.Api", "HappyFitness.Api\HappyFitness.Api.csproj", "{ACD6D4F9-AC55-463E-AB47-D4499B0692C3}"
 EndProject
 Global
@@ -46,10 +44,6 @@ Global
 		{8D341946-68FF-45CD-AD42-05FC26F84B6B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{8D341946-68FF-45CD-AD42-05FC26F84B6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D341946-68FF-45CD-AD42-05FC26F84B6B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B80E7A37-FD46-4CC8-B2D4-9B30B9CC3DF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B80E7A37-FD46-4CC8-B2D4-9B30B9CC3DF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B80E7A37-FD46-4CC8-B2D4-9B30B9CC3DF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B80E7A37-FD46-4CC8-B2D4-9B30B9CC3DF6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ACD6D4F9-AC55-463E-AB47-D4499B0692C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ACD6D4F9-AC55-463E-AB47-D4499B0692C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACD6D4F9-AC55-463E-AB47-D4499B0692C3}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -30,9 +30,7 @@ namespace HappyFitness.Mobile
             builder.Services.AddMediatR(cfg =>
             cfg.RegisterServicesFromAssembly(typeof(GetWorkoutHistoryQuery).Assembly));
 
-            //DB
-            var connectionString = "server=kontakt1.unixstorm.eu;port=3306;database=kontakt1_happyFitness;user=kontakt1_happyFitness;password=VkRCh7JfymjQ2neHXVAK";
-            builder.Services.AddInfrastructureServices(connectionString);
+            builder.Services.AddInfrastructureServices(builder.Configuration);
 
             builder.Services.AddTransient<HomeViewModel>();
             builder.Services.AddTransient<GymViewModel>();

@@ -3,92 +3,78 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace HappyFitness.Infrastructure.Migrations
+namespace HappyFitness.Infrastructure.Migrations.Sqlite
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialSqlite : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterDatabase()
-                .Annotation("MySql:CharSet", "utf8mb4");
-
             migrationBuilder.CreateTable(
                 name: "BodyParts",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    CreatedDateUtc = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    CreatedDateUtc = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_BodyParts", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "FoodSources",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    CreatedDateUtc = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    CreatedDateUtc = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_FoodSources", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "MealTypes",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    CreatedDateUtc = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    CreatedDateUtc = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_MealTypes", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    Email = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Username = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    HashedPassword = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    CreatedDateUtc = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: true),
+                    Username = table.Column<string>(type: "TEXT", nullable: true),
+                    HashedPassword = table.Column<string>(type: "TEXT", nullable: true),
+                    CreatedDateUtc = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "ExerciseDefinitions",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    BodyPartId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Description = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    CreatedDateUtc = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    BodyPartId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    Description = table.Column<string>(type: "TEXT", nullable: true),
+                    ShortName = table.Column<string>(type: "TEXT", nullable: true),
+                    CreatedDateUtc = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -99,22 +85,20 @@ namespace HappyFitness.Infrastructure.Migrations
                         principalTable: "BodyParts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "FoodProducts",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    FoodSourceId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    CaloriesPer100g = table.Column<float>(type: "float", nullable: false),
-                    ProteinPer100g = table.Column<float>(type: "float", nullable: false),
-                    CarbsPer100g = table.Column<float>(type: "float", nullable: false),
-                    FatPer100g = table.Column<float>(type: "float", nullable: false),
-                    CreatedDateUtc = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    FoodSourceId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    CaloriesPer100g = table.Column<float>(type: "REAL", nullable: false),
+                    ProteinPer100g = table.Column<float>(type: "REAL", nullable: false),
+                    CarbsPer100g = table.Column<float>(type: "REAL", nullable: false),
+                    FatPer100g = table.Column<float>(type: "REAL", nullable: false),
+                    CreatedDateUtc = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -125,18 +109,17 @@ namespace HappyFitness.Infrastructure.Migrations
                         principalTable: "FoodSources",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "Meals",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    UserId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    MealTypeId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    Date = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    CreatedDateUtc = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    UserId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    MealTypeId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreatedDateUtc = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -153,20 +136,19 @@ namespace HappyFitness.Infrastructure.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "UserProfiles",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    UserId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    DailyCalorieGoal = table.Column<float>(type: "float", nullable: false),
-                    DailyProteinGoal = table.Column<float>(type: "float", nullable: false),
-                    DailyCarbsGoal = table.Column<float>(type: "float", nullable: false),
-                    DailyFatGoal = table.Column<float>(type: "float", nullable: false),
-                    CreatedDateUtc = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    UserId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    DailyCalorieGoal = table.Column<float>(type: "REAL", nullable: false),
+                    DailyProteinGoal = table.Column<float>(type: "REAL", nullable: false),
+                    DailyCarbsGoal = table.Column<float>(type: "REAL", nullable: false),
+                    DailyFatGoal = table.Column<float>(type: "REAL", nullable: false),
+                    CreatedDateUtc = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -177,18 +159,16 @@ namespace HappyFitness.Infrastructure.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "WorkoutPlans",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    UserId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    CreatedDateUtc = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    UserId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    CreatedDateUtc = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -199,18 +179,16 @@ namespace HappyFitness.Infrastructure.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "WorkoutSessions",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    UserId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    CreatedDateUtc = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    UserId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    CreatedDateUtc = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -221,18 +199,17 @@ namespace HappyFitness.Infrastructure.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "MealEntries",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    MealId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    FoodProductId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    WeightInGrams = table.Column<float>(type: "float", nullable: false),
-                    CreatedDateUtc = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    MealId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    FoodProductId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    WeightInGrams = table.Column<float>(type: "REAL", nullable: false),
+                    CreatedDateUtc = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -249,20 +226,19 @@ namespace HappyFitness.Infrastructure.Migrations
                         principalTable: "Meals",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "PlanExercises",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    WorkoutPlanId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    ExerciseDefinitionId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    TargetSets = table.Column<int>(type: "int", nullable: false),
-                    TargetRepsMin = table.Column<int>(type: "int", nullable: false),
-                    TargetRepsMax = table.Column<int>(type: "int", nullable: false),
-                    CreatedDateUtc = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    WorkoutPlanId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ExerciseDefinitionId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    TargetSets = table.Column<int>(type: "INTEGER", nullable: false),
+                    TargetRepsMin = table.Column<int>(type: "INTEGER", nullable: false),
+                    TargetRepsMax = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedDateUtc = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -279,17 +255,16 @@ namespace HappyFitness.Infrastructure.Migrations
                         principalTable: "WorkoutPlans",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "PerformedExercises",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    WorkoutSessionId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    ExerciseDefinitionId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    CreatedDateUtc = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    WorkoutSessionId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ExerciseDefinitionId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    CreatedDateUtc = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -306,19 +281,18 @@ namespace HappyFitness.Infrastructure.Migrations
                         principalTable: "WorkoutSessions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateTable(
                 name: "PerformedSets",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    PerformedExerciseId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    SetNumber = table.Column<int>(type: "int", nullable: false),
-                    WeightInKgs = table.Column<float>(type: "float", nullable: false),
-                    Reps = table.Column<int>(type: "int", nullable: false),
-                    CreatedDateUtc = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    PerformedExerciseId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    SetNumber = table.Column<int>(type: "INTEGER", nullable: false),
+                    WeightInKgs = table.Column<float>(type: "REAL", nullable: false),
+                    Reps = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedDateUtc = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -329,8 +303,7 @@ namespace HappyFitness.Infrastructure.Migrations
                         principalTable: "PerformedExercises",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ExerciseDefinitions_BodyPartId",
