@@ -1,4 +1,7 @@
 {
+  "ConnectionStrings": {
+    "Default": "Data Source=happyfitness.db"
+  },
   "profiles": {
     "Windows Machine": {
       "commandName": "Project",

@@ -13,7 +13,6 @@ public partial class GymPage : ContentPage
     {
         base.OnAppearing();
 
-        // R?cznie wywo?ujemy komend? z ViewModelu
         if (BindingContext is GymViewModel vm && vm.LoadHistoryCommand.CanExecute(null))
         {
             vm.LoadHistoryCommand.Execute(null);

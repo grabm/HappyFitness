@@ -1,5 +1,4 @@
-﻿using HappyFitness.Application.Workouts.Queries;
-using HappyFitness.Mobile.Pages.Diary;
+﻿using HappyFitness.Mobile.Pages.Diary;
 using HappyFitness.Mobile.Pages.Gym;
 using HappyFitness.Mobile.Pages.Profile;
 using HappyFitness.Mobile.Pages.Records;
@@ -7,6 +6,7 @@ using HappyFitness.Mobile.ViewModels;
 using Microsoft.Extensions.Logging;
 using HappyFitness.Infrastructure;
 using CommunityToolkit.Maui;
+using HappyFitness.Application.Workouts.GetWorkoutsHistory;
 
 namespace HappyFitness.Mobile
 {
@@ -28,7 +28,8 @@ namespace HappyFitness.Mobile
     		builder.Logging.AddDebug();
 #endif
             builder.Services.AddMediatR(cfg =>
-            cfg.RegisterServicesFromAssembly(typeof(GetWorkoutHistoryQuery).Assembly));
+            cfg.RegisterServicesFromAssembly(typeof(GetWorkoutQuery).Assembly));
+            var dbPath = Path.Combine(FileSystem.AppDataDirectory, "happyfitness.db");
 
             builder.Services.AddInfrastructureServices(builder.Configuration);
 

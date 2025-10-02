@@ -3,11 +3,10 @@ using HappyFitness.Domain.Meals;
 using HappyFitness.Domain.Users;
 using HappyFitness.Domain.Workouts;
 using Microsoft.EntityFrameworkCore;
-using HappyFitness.Application.Interfaces;
 
 namespace HappyFitness.Infrastructure
 {
-    public class HappyFitnessDbContext : DbContext, IApplicationDbContext
+    public class HappyFitnessDbContext : DbContext
     {
         public HappyFitnessDbContext(DbContextOptions<HappyFitnessDbContext> options) : base(options)
         {
